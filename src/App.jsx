@@ -408,12 +408,11 @@ export default function App() {
         <div className="mx-auto grid max-w-6xl gap-10 px-5 sm:px-8 lg:grid-cols-2 lg:items-center">
           <Reveal>
             <div className="grid gap-4 sm:grid-cols-[0.85fr_1.15fr]">
-              <ImagePlaceholder
-                label="Founder portrait"
-                hint="1080×1350 · portrait"
-                aspect="aspect-[4/5]"
-                className="hidden sm:flex"
-              />
+          <img
+            src="images/Sasi.jpeg"
+            alt="UP founder"
+            className="hidden aspect-[4/5] w-full rounded-2xl object-cover sm:flex"
+          />
               <div className="relative overflow-hidden rounded-2xl bg-ink p-10 text-cream sm:p-12">
                 <Users className="h-8 w-8 text-yellow" />
                 <p className="mt-6 font-display text-xl font-semibold leading-snug sm:text-2xl">
