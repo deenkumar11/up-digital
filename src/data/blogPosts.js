@@ -55,6 +55,7 @@ export const BLOG_POSTS = [
       "A behind-the-scenes look at the first three months running ads and reels for our own store.",
     date: "June 2026",
     readTime: "6 min read",
+    relatedLink: { label: "Replica XI", url: "https://replicaxi.in" },
     content: [
       "Replica XI is our own store, so it's the one account where we could try things without worrying about a client's patience. That made it a useful testing ground for what actually moves the needle for a small e-commerce brand.",
       "The first month was mostly noise — trying different content styles to see what got saved and shared, rather than just liked. Product-in-hand shots outperformed flat-lay photography by a wide margin, which surprised us.",

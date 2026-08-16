@@ -24,6 +24,7 @@ import Pill from "../components/Pill.jsx";
 import ImagePlaceholder from "../components/ImagePlaceholder.jsx";
 import { WHATSAPP_NUMBERS } from "../components/Header.jsx";
 import { BLOG_POSTS } from "../data/blogPosts.js";
+import { a } from "framer-motion/client";
 
 const BLOG_ICONS = { Search, Video, TrendingUp };
 
@@ -67,7 +68,11 @@ const SERVICES = [
   },
 ];
 
-const CLIENTS = ["Studio Madrasi", "Replica XI", "Kitchen Herald"];
+const CLIENTS = [
+  { name: "Studio Madrasi", url: null },
+  { name: "Replica XI", url: "https://replicaxi.in" },
+  { name: "Kitchen Herald", url: null },
+];
 
 const RECENT_WORK = [
   { label: "Studio Madrasi — reel", hint: "1080×1080 · square" },
@@ -221,11 +226,23 @@ export default function Home() {
         </Reveal>
         <div className="overflow-hidden">
           <div className="flex w-max animate-marquee gap-10 whitespace-nowrap">
-            {[...CLIENTS, ...CLIENTS].map((c, i) => (
-              <span key={i} className="font-display text-2xl font-bold text-ink/20 sm:text-3xl">
-                {c}
-              </span>
-            ))}
+              {[...CLIENTS, ...CLIENTS].map((c, i) =>
+                c.url ? (
+                  <a
+                    key={i}
+                    href={c.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-display text-2xl font-bold text-ink/20 transition-colors hover:text-ink/60 sm:text-3xl"
+                  >
+                    {c.name}
+                  </a>
+                ) : (
+                  <span key={i} className="font-display text-2xl font-bold text-ink/20 sm:text-3xl">
+                    {c.name}
+                  </span>
+                )
+              )}
           </div>
         </div>
 

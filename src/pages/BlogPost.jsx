@@ -46,6 +46,19 @@ export default function BlogPost() {
         ))}
       </Reveal>
 
+    {post.relatedLink && (
+      <Reveal delay={130}>
+        <a
+          href={post.relatedLink.url}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-6 inline-flex items-center gap-1.5 font-mono text-[14px] font-medium text-teal hover:underline"
+        >
+          {post.relatedLink.label} →
+        </a>
+      </Reveal>
+    )}
+
       <Reveal delay={160} className="mt-14 rounded-2xl bg-ink p-8 text-cream sm:p-10">
         <p className="font-display text-xl font-semibold leading-snug">
           Want this kind of result for your business?
