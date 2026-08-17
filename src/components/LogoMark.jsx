@@ -6,7 +6,7 @@ import React from "react";
 export default function LogoMark({ className = "h-9 w-9" }) {
   return (
     <img
-      src="/images/logo (1).svg"
+      src="/images/Logo UP.png "
       alt="UP logo"
       className={`${className} object-contain`}
     />

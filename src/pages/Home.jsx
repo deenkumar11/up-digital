@@ -69,13 +69,11 @@ const SERVICES = [
 ];
 
 const CLIENTS = [
-  { name: "Studio Madrasi", url: null },
   { name: "Replica XI", url: "https://replicaxi.in" },
   { name: "Kitchen Herald", url: null },
 ];
 
 const RECENT_WORK = [
-  { label: "Studio Madrasi — reel", hint: "1080×1080 · square" },
   { label: "Replica XI — product shoot", hint: "1080×1080 · square" },
   { label: "Kitchen Herald — LinkedIn campaign", hint: "1080×1080 · square" },
 ];
@@ -249,9 +247,18 @@ export default function Home() {
         {/* recent-work samples — swap for real before/after or shoot stills */}
         <div className="mx-auto mt-12 max-w-6xl px-5 sm:px-8">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-            {RECENT_WORK.map((item) => (
-              <ImagePlaceholder key={item.label} label={item.label} hint={item.hint} aspect="aspect-square" />
-            ))}
+            {RECENT_WORK.map((item) =>
+              item.image ? (
+                <img
+                  key={item.label}
+                  src={item.image}
+                  alt={item.label}
+                  className="aspect-square w-full rounded-2xl object-cover"
+                />
+              ) : (
+                <ImagePlaceholder key={item.label} label={item.label} hint={item.hint} aspect="aspect-square" />
+              )
+            )}
           </div>
         </div>
       </section>
