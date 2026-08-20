@@ -178,29 +178,25 @@ export default function Home() {
           {/* photo collage — swap each tile for a real shoot photo */}
           <Reveal delay={260} className="mt-14">
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-              <ImagePlaceholder
-                label="Team at work"
-                hint="1080×1350 · portrait"
-                aspect="aspect-[4/5]"
-                className="rotate-[-1.5deg]"
+              <img
+                src="/images/team-at-work.webp"
+                alt="UP team at work"
+                className="aspect-[4/5] w-full rounded-2xl object-cover rotate-[-1.5deg]"
               />
-              <ImagePlaceholder
-                label="On-location shoot"
-                hint="1080×1350 · portrait"
-                aspect="aspect-[4/5]"
-                className="rotate-[1deg] sm:mt-4"
+              <img
+                src="/images/on-location-shoot.webp"
+                alt="UP on-location shoot"
+                className="aspect-[4/5] w-full rounded-2xl object-cover rotate-[1deg] sm:mt-4"
               />
-              <ImagePlaceholder
-                label="Client meeting"
-                hint="1080×1350 · portrait"
-                aspect="aspect-[4/5]"
-                className="rotate-[1.5deg]"
+              <img
+                src="/images/client-meeting.webp"
+                alt="UP client meeting"
+                className="aspect-[4/5] w-full rounded-2xl object-cover rotate-[1.5deg]"
               />
-              <ImagePlaceholder
-                label="Editing session"
-                hint="1080×1350 · portrait"
-                aspect="aspect-[4/5]"
-                className="rotate-[-1deg] sm:mt-4"
+              <img
+                src="/images/editing-session.webp"
+                alt="UP editing session"
+                className="aspect-[4/5] w-full rounded-2xl object-cover rotate-[-1deg] sm:mt-4"
               />
             </div>
           </Reveal>
