@@ -101,6 +101,97 @@ const STEPS = [
   },
 ];
 
+const PRICING_TIERS = [
+  {
+    name: "Starter",
+    price: "₹7,000",
+    period: "/month",
+    tagline: "Keep the page alive without lifting a finger.",
+    features: ["Weekly posting & replies", "Monthly performance report", "One point of contact"],
+    cta: "Start with Starter",
+    featured: false,
+  },
+  {
+    name: "Growth",
+    price: "₹15,000",
+    period: "/month",
+    tagline: "Our most-booked plan — shoot, ads and upkeep in one retainer.",
+    features: [
+      "Everything in Starter",
+      "1 brand shoot every month",
+      "Reels cut from every shoot",
+      "Instagram & Meta ads managed",
+    ],
+    cta: "Go with Growth",
+    featured: true,
+  },
+  {
+    name: "Scale",
+    price: "Custom",
+    period: "",
+    tagline: "For businesses ready to go all-in on content, ads and a site that converts.",
+    features: [
+      "Everything in Growth",
+      "Website build & ongoing upkeep",
+      "Priority turnaround on requests",
+      "Quarterly strategy call",
+    ],
+    cta: "Get a quote",
+    featured: false,
+  },
+];
+
+const COMPARE_GROUPS = [
+  {
+    group: "Content",
+    rows: [
+      { label: "Brand shoots included", values: ["—", "1 / month", "2 / month"] },
+      { label: "Reels & short-form cuts", values: ["—", "4 / month", "8 / month"] },
+      { label: "Captions & scheduling", values: [true, true, true] },
+    ],
+  },
+  {
+    group: "Advertising",
+    rows: [
+      { label: "Instagram & Meta ads management", values: [false, true, true] },
+      { label: "Weekly targeting & creative refresh", values: [false, true, true] },
+      { label: "Ad spend billed direct to your account", values: [false, true, true] },
+    ],
+  },
+  {
+    group: "Website",
+    rows: [
+      { label: "Website build", values: [false, false, true] },
+      { label: "Ongoing website upkeep", values: [false, false, true] },
+      { label: "SEO & performance checks", values: [false, false, true] },
+    ],
+  },
+  {
+    group: "Management & support",
+    rows: [
+      { label: "Weekly posting & replies", values: [true, true, true] },
+      { label: "Monthly performance report", values: [true, true, true] },
+      { label: "One point of contact", values: [true, true, true] },
+      { label: "Priority turnaround on requests", values: [false, false, true] },
+      { label: "Quarterly strategy call", values: [false, false, true] },
+    ],
+  },
+];
+
+function CompareCell({ value }) {
+  if (value === true) {
+    return (
+      <span className="mx-auto grid h-6 w-6 place-items-center rounded-full bg-yellow/90">
+        <Check className="h-3.5 w-3.5 text-ink" strokeWidth={3} />
+      </span>
+    );
+  }
+  if (value === false) {
+    return <span className="mx-auto block text-cream/25">—</span>;
+  }
+  return <span className="font-mono text-[12.5px] text-cream/80">{value}</span>;
+}
+
 export default function Home() {
   const waLink = `https://wa.me/91${WHATSAPP_NUMBERS[0]}?text=${encodeURIComponent(
     "Hi UP! I'd like to talk about growing my business."
@@ -427,41 +518,161 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PRICING */}
-      <section id="pricing" className="bg-ink py-24 text-cream">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <Reveal className="max-w-lg">
-            <span className="font-mono text-[11px] font-medium tracking-widest text-yellow">RATE CARD</span>
-            <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl">
-              Straightforward pricing, no proposal deck required.
-            </h2>
-          </Reveal>
+{/* PRICING */}
+<section id="pricing" className="bg-ink py-24 text-cream">
+  <div className="mx-auto max-w-6xl px-5 sm:px-8">
+    <Reveal className="mx-auto max-w-xl text-center">
+      <span className="font-mono text-[11px] font-medium tracking-widest text-yellow">PLANS</span>
+      <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl">
+        Pick a plan, cancel whenever it stops making sense.
+      </h2>
+      <p className="mt-4 text-[14.5px] leading-relaxed text-cream/65">
+        No lock-in contracts. Ad spend is billed directly to your ad
+        account, separate from the plan fee.
+      </p>
+    </Reveal>
 
-          <Reveal delay={100} className="mt-10 overflow-hidden rounded-2xl border border-cream/15">
-            <table className="w-full border-collapse text-left text-[13.5px]">
-              <thead>
-                <tr className="border-b border-cream/15 font-mono text-cream/50">
-                  <th className="px-6 py-4 font-medium">Service</th>
-                  <th className="px-6 py-4 font-medium">Rate</th>
-                </tr>
-              </thead>
-              <tbody>
-                {SERVICES.map((s, i) => (
-                  <tr key={s.name} className={i !== SERVICES.length - 1 ? "border-b border-cream/10" : ""}>
-                    <td className="px-6 py-4 font-medium">{s.name}</td>
-                    <td className="px-6 py-4 font-mono text-yellow">{s.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </Reveal>
-          <Reveal delay={160}>
-            <p className="mt-4 font-mono text-[12.5px] text-cream/45">
-              Ad spend for Instagram &amp; Meta campaigns is billed directly to your ad account, separate from the management fee.
+    <div className="mt-14 grid gap-6 lg:grid-cols-3 lg:items-start">
+      {PRICING_TIERS.map((tier, i) => (
+        <Reveal key={tier.name} delay={i * 90}>
+          <motion.div
+            whileHover={{ y: -6 }}
+            transition={{ duration: 0.25 }}
+            className={`relative flex h-full flex-col rounded-2xl border p-7 ${
+              tier.featured
+                ? "border-yellow bg-cream text-ink lg:-mt-4 lg:mb-4 lg:scale-[1.04] lg:shadow-[0_24px_50px_-20px_rgba(0,0,0,0.5)]"
+                : "border-cream/15 bg-cream/[0.04]"
+            }`}
+          >
+            {tier.featured && (
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-yellow px-3 py-1 font-mono text-[10.5px] font-semibold tracking-wide text-ink">
+                MOST POPULAR
+              </span>
+            )}
+
+            <h3 className="font-display text-lg font-bold">{tier.name}</h3>
+            <p className={`mt-2 text-[13px] leading-relaxed ${tier.featured ? "text-ink/65" : "text-cream/60"}`}>
+              {tier.tagline}
             </p>
-          </Reveal>
+
+            <div className="mt-6 flex items-baseline gap-1.5">
+              <span className="font-display text-4xl font-extrabold">{tier.price}</span>
+              {tier.period && (
+                <span className={`font-mono text-[13px] ${tier.featured ? "text-ink/50" : "text-cream/50"}`}>
+                  {tier.period}
+                </span>
+              )}
+            </div>
+
+            <ul className="mt-7 space-y-3">
+              {tier.features.map((f) => (
+                <li key={f} className="flex items-start gap-2.5 text-[13.5px]">
+                  <span
+                    className={`mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full ${
+                      tier.featured ? "bg-yellow" : "bg-cream/15"
+                    }`}
+                  >
+                    <Check
+                      className={`h-3 w-3 ${tier.featured ? "text-ink" : "text-cream"}`}
+                      strokeWidth={3}
+                    />
+                  </span>
+                  <span className={tier.featured ? "text-ink/80" : "text-cream/80"}>{f}</span>
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href={waLink}
+              target="_blank"
+              rel="noreferrer"
+              className={`mt-8 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-[14px] font-semibold transition-transform hover:scale-[1.03] active:scale-95 ${
+                tier.featured ? "bg-ink text-cream" : "bg-cream/10 text-cream hover:bg-cream/15"
+              }`}
+            >
+              {tier.cta}
+            </a>
+          </motion.div>
+        </Reveal>
+      ))}
+    </div>
+
+    <Reveal delay={200}>
+      <p className="mt-10 text-center font-mono text-[12.5px] text-cream/45">
+        Only need a single shoot, reel or website instead of a monthly plan?{" "}
+        <a href="#services" className="text-yellow hover:underline">
+          See one-off pricing
+        </a>
+        .
+      </p>
+    </Reveal>
+
+    {/* COMPARE PLANS & FEATURES */}
+    <Reveal delay={260}>
+      <div className="mt-24">
+        <div className="mx-auto max-w-xl text-center">
+          <span className="font-mono text-[11px] font-medium tracking-widest text-yellow">
+            COMPARE
+          </span>
+          <h3 className="mt-3 font-display text-2xl font-extrabold leading-tight sm:text-3xl">
+            Compare plans &amp; features
+          </h3>
+          <p className="mt-3 text-[14px] leading-relaxed text-cream/60">
+            A closer look at what's included, plan by plan.
+          </p>
         </div>
-      </section>
+
+        <div className="mt-10 overflow-x-auto rounded-2xl border border-cream/15">
+          <table className="w-full min-w-[560px] border-collapse text-left">
+            <thead>
+              <tr className="border-b border-cream/15 bg-cream/[0.04]">
+                <th className="sticky left-0 bg-ink px-5 py-4 font-mono text-[12px] font-medium tracking-wide text-cream/50">
+                  &nbsp;
+                </th>
+                {PRICING_TIERS.map((tier) => (
+                  <th
+                    key={tier.name}
+                    className={`px-5 py-4 text-center font-display text-[15px] font-bold ${
+                      tier.featured ? "text-yellow" : "text-cream"
+                    }`}
+                  >
+                    {tier.name}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {COMPARE_GROUPS.map((group) => (
+                <React.Fragment key={group.group}>
+                  <tr className="bg-cream/[0.06]">
+                    <td
+                      colSpan={PRICING_TIERS.length + 1}
+                      className="sticky left-0 px-5 py-2.5 font-mono text-[11px] font-semibold uppercase tracking-widest text-cream/55"
+                    >
+                      {group.group}
+                    </td>
+                  </tr>
+                  {group.rows.map((row) => (
+                    <tr key={row.label} className="border-b border-cream/10 last:border-b-0">
+                      <td className="sticky left-0 bg-ink px-5 py-3.5 text-[13.5px] text-cream/80">
+                        {row.label}
+                      </td>
+                      {row.values.map((value, i) => (
+                        <td key={i} className="px-5 py-3.5 text-center">
+                          <CompareCell value={value} />
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </React.Fragment>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </Reveal>
+  </div>
+</section>
 
       {/* CTA */}
       <section className="relative overflow-hidden bg-yellow py-24">
