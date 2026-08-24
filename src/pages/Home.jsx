@@ -24,7 +24,7 @@ import Pill from "../components/Pill.jsx";
 import ImagePlaceholder from "../components/ImagePlaceholder.jsx";
 import { WHATSAPP_NUMBERS } from "../components/Header.jsx";
 import { BLOG_POSTS } from "../data/blogPosts.js";
-import { a } from "framer-motion/client";
+import { a, label, tr } from "framer-motion/client";
 
 const BLOG_ICONS = { Search, Video, TrendingUp };
 
@@ -155,7 +155,7 @@ const COMPARE_GROUPS = [
     rows: [
       { label: "Instagram & Meta ads management", values: [false, true, true] },
       { label: "Weekly targeting & creative refresh", values: [false, true, true] },
-      { label: "Ad spend billed direct to your account", values: [false, true, true] },
+      // { label: "Ad spend billed direct to your account", values: [false, true, true] },
     ],
   },
   {
@@ -166,16 +166,31 @@ const COMPARE_GROUPS = [
       { label: "SEO & performance checks", values: [false, false, true] },
     ],
   },
+  // {
+  //   group: "Management & support",
+  //   rows: [
+  //     { label: "Weekly posting & replies", values: [true, true, true] },
+  //     { label: "Monthly performance report", values: [true, true, true] },
+  //     { label: "One point of contact", values: [true, true, true] },
+  //     { label: "Priority turnaround on requests", values: [false, false, true] },
+  //     { label: "Quarterly strategy call", values: [false, false, true] },
+  //   ],
+  // },
   {
-    group: "Management & support",
-    rows: [
-      { label: "Weekly posting & replies", values: [true, true, true] },
-      { label: "Monthly performance report", values: [true, true, true] },
-      { label: "One point of contact", values: [true, true, true] },
-      { label: "Priority turnaround on requests", values: [false, false, true] },
-      { label: "Quarterly strategy call", values: [false, false, true] },
-    ],
+  group: "Google Business Profile",
+  rows: [
+    {label: "Profile Setup and Optimization", values: [true,true,true] },
+    {label: "Local SEO Optimization", values: [true,true,true] },
+  ]
   },
+    {
+  group: "Whatsapp Business Optimization",
+  rows: [
+    {label: "Profile Setup and Optimization", values: [true,true,true] },
+    {label: "Catalogue Building", values: [false,true,true] },
+    {label: "AI Automated Replies", values: [false,false,true] },
+  ]
+  }
 ];
 
 function CompareCell({ value }) {
