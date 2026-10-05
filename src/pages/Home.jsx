@@ -104,7 +104,7 @@ const STEPS = [
 const PRICING_TIERS = [
   {
     name: "Starter",
-    price: "₹7,000",
+    price: "₹9999",
     period: "/month",
     tagline: "Keep the page alive without lifting a finger.",
     features: ["Weekly posting & replies", "Monthly performance report", "One point of contact"],
@@ -113,7 +113,7 @@ const PRICING_TIERS = [
   },
   {
     name: "Growth",
-    price: "₹15,000",
+    price: "₹19,999",
     period: "/month",
     tagline: "Our most-booked plan — shoot, ads and upkeep in one retainer.",
     features: [
