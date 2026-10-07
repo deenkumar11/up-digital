@@ -18,53 +18,71 @@ import {
   Search,
   Video,
   TrendingUp,
+  Send,
 } from "lucide-react";
 import Reveal from "../components/Reveal.jsx";
 import Pill from "../components/Pill.jsx";
 import ImagePlaceholder from "../components/ImagePlaceholder.jsx";
 import { WHATSAPP_NUMBERS } from "../components/Header.jsx";
 import { BLOG_POSTS } from "../data/blogPosts.js";
-import { a, label, tr } from "framer-motion/client";
 
 const BLOG_ICONS = { Search, Video, TrendingUp };
 
 /* ---------- data drawn from UP's real service list ---------- */
-const SERVICES = [
+export const SERVICES = [
   {
+    slug: "brand-films-product-shoots",
     icon: Film,
     name: "Brand films & product shoots",
     desc: "On-location shoots that make the product the hero — cut for reels, ads and your feed in one session.",
-    price: "₹6,000 – ₹10,000 / shoot",
+    includes: "A pre-shoot brief, shot planning, on-location photography or video, and edited assets sized for your channels.",
+    outcome: "A reusable library of polished product and brand visuals for launches, ads, and everyday posts.",
+    bestFor: "Product launches, menus, catalogues, and brands that need fresh visuals.",
   },
   {
+    slug: "reels-short-form-cuts",
     icon: Camera,
     name: "Reels & short-form cuts",
     desc: "Fast-turnaround edits built for retention: hooks in the first second, captions baked in.",
-    price: "₹1,500 – ₹3,000 / reel",
+    includes: "A strong opening hook, pacing and cuts, on-screen captions, music selection, and vertical exports.",
+    outcome: "Ready-to-publish short videos that make your offer easy to understand and keep viewers watching.",
+    bestFor: "Teams with existing footage or brands that want a consistent short-form presence.",
   },
   {
+    slug: "instagram-meta-ads",
     icon: Instagram,
     name: "Instagram & Meta ads",
     desc: "Targeting, creative and weekly optimisation. Ad spend is billed separately, straight to your account.",
-    price: "₹6,000 – ₹12,000 / month",
+    includes: "Campaign setup, audience and placement planning, creative guidance, and regular performance reviews.",
+    outcome: "A measured path from local reach to enquiries, with ad spend kept in your own account.",
+    bestFor: "Businesses ready to promote a service, offer, launch, or location to a defined audience.",
   },
   {
+    slug: "website-builds",
     icon: Globe2,
     name: "Website builds",
     desc: "A fast, mobile-first site that turns visits into calls — built once, yours forever.",
-    price: "₹12,000 – ₹25,000 one-time",
+    includes: "Page and content planning, responsive design, core on-page SEO, contact calls to action, and launch support.",
+    outcome: "A clear, mobile-friendly home for your business that helps visitors understand your offer and take action.",
+    bestFor: "Businesses that need a first website or want to replace an outdated one.",
   },
   {
+    slug: "always-on-management",
     icon: RefreshCw,
     name: "Always-on management",
     desc: "Posting, replies and reporting handled every week, so the page never goes quiet.",
-    price: "₹7,000 – ₹10,000 / month",
+    includes: "A practical content calendar, post scheduling, routine community replies, and a monthly performance summary.",
+    outcome: "A reliably active social presence and a clearer view of which content connects with customers.",
+    bestFor: "Busy owners who want consistent social channels without managing every post themselves.",
   },
   {
+    slug: "up-growth-package",
     icon: Sparkles,
     name: "UP Growth Package",
     desc: "Shoot, ads and maintenance under one retainer — our most-booked plan for businesses ready to compound.",
-    price: "₹15,000 – ₹20,000 / month",
+    includes: "A tailored mix of content shoots, short-form edits, campaign management, and ongoing channel support.",
+    outcome: "One joined-up monthly plan where creative, distribution, and upkeep work toward the same goals.",
+    bestFor: "Businesses ready to combine several services and build momentum month over month.",
   },
 ];
 
@@ -74,138 +92,71 @@ const CLIENTS = [
 ];
 
 const RECENT_WORK = [
-  { label: "Replica XI — product shoot", hint: "1080×1080 · square" },
-  { label: "Kitchen Herald — LinkedIn campaign", hint: "1080×1080 · square" },
+  {
+    client: "Replica XI",
+    service: "Product photography",
+    title: "A closer look at the product.",
+    description: "A product shoot for Replica XI, with the Mexico shirt photographed on location.",
+    image: "/images/replica.png",
+    alt: "Mexico football shirt photographed outdoors for Replica XI",
+    url: "https://replicaxi.in",
+  },
+  {
+    client: "Kitchen Herald",
+    service: "LinkedIn campaign",
+    title: "A stronger presence for food industry media.",
+    description: "A LinkedIn campaign creative featuring Kitchen Herald’s B2B culinary media positioning.",
+    image: "/images/herald-linkedin.png",
+    alt: "Kitchen Herald LinkedIn company page and culinary media branding",
+    url: null,
+  },
 ];
 
 const STEPS = [
   {
     n: "01",
-    title: "Discovery call",
-    desc: "15 minutes on what your business needs right now — no deck, just questions.",
+    title: "Talk through your goals",
+    desc: "We learn about your business, priorities, audience, and what you want to improve.",
   },
   {
     n: "02",
-    title: "Shoot or build",
-    desc: "Our photographer and web team get to work while you keep running the business.",
+    title: "Get a clear scope",
+    desc: "We recommend the right service mix, deliverables, timing, and a tailored quote before work begins.",
   },
   {
     n: "03",
-    title: "Launch & advertise",
-    desc: "Content goes live, ads go up, and we watch the first week of numbers closely.",
+    title: "Create and launch",
+    desc: "We produce the agreed work, share it with you, and prepare it for publishing or launch.",
   },
   {
     n: "04",
-    title: "Grow, monthly",
-    desc: "Every month after is reporting, refining and pushing the number further up.",
+    title: "Review what’s next",
+    desc: "For ongoing work, we review progress together and shape the next set of priorities.",
   },
 ];
 
-const PRICING_TIERS = [
+const FAQS = [
   {
-    name: "Starter",
-    price: "₹9999",
-    period: "/month",
-    tagline: "Keep the page alive without lifting a finger.",
-    features: ["Weekly posting & replies", "Monthly performance report", "One point of contact"],
-    cta: "Start with Starter",
-    featured: false,
+    question: "How do you decide what a project will cost?",
+    answer: "We price around the scope: the services, deliverables, schedule, and support you need. Tell us about the project through the quote form and we’ll recommend a scope before you commit.",
   },
   {
-    name: "Growth",
-    price: "₹19,999",
-    period: "/month",
-    tagline: "Our most-booked plan — shoot, ads and upkeep in one retainer.",
-    features: [
-      "Everything in Starter",
-      "1 brand shoot every month",
-      "Reels cut from every shoot",
-      "Instagram & Meta ads managed",
-    ],
-    cta: "Go with Growth",
-    featured: true,
+    question: "Is advertising spend included in your fee?",
+    answer: "No. Meta advertising spend is separate from the service fee and is paid directly from your own ad account.",
   },
   {
-    name: "Scale",
-    price: "Custom",
-    period: "",
-    tagline: "For businesses ready to go all-in on content, ads and a site that converts.",
-    features: [
-      "Everything in Growth",
-      "Website build & ongoing upkeep",
-      "Priority turnaround on requests",
-      "Quarterly strategy call",
-    ],
-    cta: "Get a quote",
-    featured: false,
+    question: "How long will my project take?",
+    answer: "Timing depends on the work and how quickly we can receive feedback and materials. We’ll agree on the schedule with you as part of the project scope.",
+  },
+  {
+    question: "What should I prepare before we talk?",
+    answer: "A rough idea of your goals, audience, services, and any existing photos, brand materials, or website is helpful. You don’t need a polished brief to get started.",
+  },
+  {
+    question: "Can I start with just one service?",
+    answer: "Yes. You can enquire about a single shoot, a reel batch, a website, or another focused project. Ongoing support is also available if it fits your needs.",
   },
 ];
-
-const COMPARE_GROUPS = [
-  {
-    group: "Content",
-    rows: [
-      { label: "Brand shoots included", values: ["—", "1 / month", "2 / month"] },
-      { label: "Reels & short-form cuts", values: ["—", "4 / month", "8 / month"] },
-      { label: "Captions & scheduling", values: [true, true, true] },
-    ],
-  },
-  {
-    group: "Advertising",
-    rows: [
-      { label: "Instagram & Meta ads management", values: [false, true, true] },
-      { label: "Weekly targeting & creative refresh", values: [false, true, true] },
-      // { label: "Ad spend billed direct to your account", values: [false, true, true] },
-    ],
-  },
-  {
-    group: "Website",
-    rows: [
-      { label: "Website build", values: [false, false, true] },
-      { label: "Ongoing website upkeep", values: [false, false, true] },
-      { label: "SEO & performance checks", values: [false, false, true] },
-    ],
-  },
-  // {
-  //   group: "Management & support",
-  //   rows: [
-  //     { label: "Weekly posting & replies", values: [true, true, true] },
-  //     { label: "Monthly performance report", values: [true, true, true] },
-  //     { label: "One point of contact", values: [true, true, true] },
-  //     { label: "Priority turnaround on requests", values: [false, false, true] },
-  //     { label: "Quarterly strategy call", values: [false, false, true] },
-  //   ],
-  // },
-  {
-  group: "Google Business Profile",
-  rows: [
-    {label: "Profile Setup and Optimization", values: [true,true,true] },
-    {label: "Local SEO Optimization", values: [true,true,true] },
-  ]
-  },
-    {
-  group: "Whatsapp Business Optimization",
-  rows: [
-    {label: "Profile Setup and Optimization", values: [true,true,true] },
-    {label: "Catalogue Building", values: [false,true,true] },
-    {label: "AI Automated Replies", values: [false,false,true] },
-  ]
-  }
-];
-
-function CompareCell({ value }) {
-  if (value === true) {
-    return (
-      <span className="mx-auto grid h-6 w-6 place-items-center rounded-full bg-yellow/90">
-        <Check className="h-3.5 w-3.5 text-ink" strokeWidth={3} />
-      </span>
-    );
-  }
-  if (value === false) {
-    return <span className="mx-auto block text-cream/25">—</span>;
-  }
-  return <span className="font-mono text-[12.5px] text-cream/80">{value}</span>;
-}
 
 export default function Home() {
   const waLink = `https://wa.me/91${WHATSAPP_NUMBERS[0]}?text=${encodeURIComponent(
@@ -263,7 +214,7 @@ export default function Home() {
                   href="#pricing"
                   className="inline-flex items-center gap-2 rounded-full border border-ink/25 bg-cream/70 px-5 py-3 text-[14px] font-semibold transition-colors hover:bg-cream"
                 >
-                  See rate card
+                  Explore packages
                 </a>
               </div>
 
@@ -321,7 +272,7 @@ export default function Home() {
       <section id="work" className="border-b border-ink/10 bg-cream py-16">
         <Reveal>
           <p className="mb-5 text-center font-mono text-[11px] font-medium tracking-widest text-ink/45">
-            BUSINESSES WE'RE GROWING RIGHT NOW
+            SELECTED CLIENT WORK
           </p>
         </Reveal>
         <div className="overflow-hidden">
@@ -346,23 +297,21 @@ export default function Home() {
           </div>
         </div>
 
-        {/* recent-work samples — swap for real before/after or shoot stills */}
-        <div className="mx-auto mt-12 max-w-6xl px-5 sm:px-8">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-            {RECENT_WORK.map((item) =>
-              item.image ? (
-                <img
-                  key={item.label}
-                  src={item.image}
-                  alt={item.label}
-                  className="aspect-square w-full rounded-2xl object-cover"
-                />
-              ) : (
-                <ImagePlaceholder key={item.label} label={item.label} hint={item.hint} aspect="aspect-square" />
-              )
-            )}
+        <div className="mx-auto mt-12 grid max-w-6xl gap-5 px-5 sm:px-8 md:grid-cols-2">
+          {RECENT_WORK.map((item, i) => (
+            <Reveal key={item.client} delay={i * 80}>
+              <article className="h-full overflow-hidden rounded-2xl border border-ink/10 bg-white/60">
+                <img src={item.image} alt={item.alt} className="aspect-[16/10] w-full object-cover object-top" />
+                <div className="p-6">
+                  <p className="font-mono text-[11px] font-medium tracking-widest text-teal">{item.client} · {item.service}</p>
+                  <h2 className="mt-2 font-display text-xl font-bold">{item.title}</h2>
+                  <p className="mt-2 text-[13.5px] leading-relaxed text-ink/65">{item.description}</p>
+                  {item.url && <a href={item.url} target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-teal hover:underline">Visit Replica XI <ArrowRight className="h-3.5 w-3.5" /></a>}
+                </div>
+              </article>
+            </Reveal>
+          ))}
           </div>
-        </div>
       </section>
 
       {/* SERVICES */}
@@ -383,7 +332,7 @@ export default function Home() {
                 <motion.div
                   whileHover={{ y: -6 }}
                   transition={{ duration: 0.25 }}
-                  className={`h-full rounded-2xl border p-6 transition-shadow duration-300 hover:shadow-[0_20px_40px_-24px_rgba(28,27,24,0.4)] ${
+                  className={`flex h-full flex-col rounded-2xl border p-6 transition-shadow duration-300 hover:shadow-[0_20px_40px_-24px_rgba(28,27,24,0.4)] ${
                     isFeatured
                       ? "border-ink bg-ink text-cream"
                       : "border-ink/10 bg-white/50 hover:border-ink/25"
@@ -396,9 +345,19 @@ export default function Home() {
                   <p className={`mt-2 text-[13.5px] leading-relaxed ${isFeatured ? "text-cream/75" : "text-ink/65"}`}>
                     {s.desc}
                   </p>
-                  <p className={`mt-4 font-mono text-[12.5px] font-medium ${isFeatured ? "text-yellow" : "text-teal"}`}>
-                    {s.price}
-                  </p>
+                  <div className={`mt-5 flex-1 space-y-3 border-t pt-4 text-[13px] leading-relaxed ${isFeatured ? "border-cream/15 text-cream/75" : "border-ink/10 text-ink/70"}`}>
+                    <p><strong className={isFeatured ? "text-cream" : "text-ink"}>What’s included:</strong> {s.includes}</p>
+                    <p><strong className={isFeatured ? "text-cream" : "text-ink"}>What you get:</strong> {s.outcome}</p>
+                    <p><strong className={isFeatured ? "text-cream" : "text-ink"}>A good fit for:</strong> {s.bestFor}</p>
+                  </div>
+                  <div className="mt-auto flex flex-wrap items-center gap-x-5 gap-y-3 pt-5">
+                    <a href="#quote" className={`inline-flex w-fit items-center gap-2 rounded-full px-4 py-2 text-[13px] font-semibold ${isFeatured ? "bg-yellow text-ink" : "bg-ink text-cream"}`}>
+                      Get a quote <ArrowRight className="h-3.5 w-3.5" />
+                    </a>
+                    <Link to={`/services/${s.slug}`} className={`inline-flex w-fit items-center gap-1 text-[12.5px] font-medium ${isFeatured ? "text-cream/75 hover:text-yellow" : "text-teal hover:underline"}`}>
+                      Explore service <ArrowRight className="h-3 w-3" />
+                    </Link>
+                  </div>
                 </motion.div>
               </Reveal>
             );
@@ -533,161 +492,99 @@ export default function Home() {
         </div>
       </section>
 
-{/* PRICING */}
+      {/* FAQ */}
+      <section id="faq" className="bg-white/40 py-24">
+        <div className="mx-auto grid max-w-6xl gap-10 px-5 sm:px-8 lg:grid-cols-[0.8fr_1.2fr]">
+          <Reveal>
+            <span className="font-mono text-[11px] font-medium tracking-widest text-teal">GOOD TO KNOW</span>
+            <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl">A few things people ask before getting started.</h2>
+            <p className="mt-4 text-[14px] leading-relaxed text-ink/65">Still have a question? Send us a message and we’ll talk it through.</p>
+            <a href={waLink} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-[13.5px] font-semibold text-cream"><MessageCircle className="h-4 w-4" /> Ask us on WhatsApp</a>
+          </Reveal>
+          <Reveal delay={100} className="space-y-3">
+            {FAQS.map((faq) => (
+              <details key={faq.question} className="group rounded-2xl border border-ink/10 bg-cream p-5 open:border-ink/20">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-[15px] font-bold marker:hidden">{faq.question}<span aria-hidden="true" className="text-xl text-teal transition-transform group-open:rotate-45">+</span></summary>
+                <p className="mt-3 max-w-2xl text-[13.5px] leading-relaxed text-ink/65">{faq.answer}</p>
+              </details>
+            ))}
+          </Reveal>
+        </div>
+      </section>
+
+{/* PACKAGE PREVIEW */}
 <section id="pricing" className="bg-ink py-24 text-cream">
   <div className="mx-auto max-w-6xl px-5 sm:px-8">
     <Reveal className="mx-auto max-w-xl text-center">
-      <span className="font-mono text-[11px] font-medium tracking-widest text-yellow">PLANS</span>
+      <span className="font-mono text-[11px] font-medium tracking-widest text-yellow">WAYS TO WORK TOGETHER</span>
       <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl">
-        Pick a plan, cancel whenever it stops making sense.
+        The right scope, shaped around your business.
       </h2>
       <p className="mt-4 text-[14.5px] leading-relaxed text-cream/65">
-        No lock-in contracts. Ad spend is billed directly to your ad
-        account, separate from the plan fee.
+        Start with one focused project or combine services into ongoing support. We’ll recommend a scope after learning about your goals; ad spend is always separate.
       </p>
     </Reveal>
 
-    <div className="mt-14 grid gap-6 lg:grid-cols-3 lg:items-start">
-      {PRICING_TIERS.map((tier, i) => (
-        <Reveal key={tier.name} delay={i * 90}>
-          <motion.div
-            whileHover={{ y: -6 }}
-            transition={{ duration: 0.25 }}
-            className={`relative flex h-full flex-col rounded-2xl border p-7 ${
-              tier.featured
-                ? "border-yellow bg-cream text-ink lg:-mt-4 lg:mb-4 lg:scale-[1.04] lg:shadow-[0_24px_50px_-20px_rgba(0,0,0,0.5)]"
-                : "border-cream/15 bg-cream/[0.04]"
-            }`}
-          >
-            {tier.featured && (
-              <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-yellow px-3 py-1 font-mono text-[10.5px] font-semibold tracking-wide text-ink">
-                MOST POPULAR
-              </span>
-            )}
-
-            <h3 className="font-display text-lg font-bold">{tier.name}</h3>
-            <p className={`mt-2 text-[13px] leading-relaxed ${tier.featured ? "text-ink/65" : "text-cream/60"}`}>
-              {tier.tagline}
-            </p>
-
-            <div className="mt-6 flex items-baseline gap-1.5">
-              <span className="font-display text-4xl font-extrabold">{tier.price}</span>
-              {tier.period && (
-                <span className={`font-mono text-[13px] ${tier.featured ? "text-ink/50" : "text-cream/50"}`}>
-                  {tier.period}
-                </span>
-              )}
-            </div>
-
-            <ul className="mt-7 space-y-3">
-              {tier.features.map((f) => (
-                <li key={f} className="flex items-start gap-2.5 text-[13.5px]">
-                  <span
-                    className={`mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full ${
-                      tier.featured ? "bg-yellow" : "bg-cream/15"
-                    }`}
-                  >
-                    <Check
-                      className={`h-3 w-3 ${tier.featured ? "text-ink" : "text-cream"}`}
-                      strokeWidth={3}
-                    />
-                  </span>
-                  <span className={tier.featured ? "text-ink/80" : "text-cream/80"}>{f}</span>
-                </li>
-              ))}
-            </ul>
-
-            <a
-              href={waLink}
-              target="_blank"
-              rel="noreferrer"
-              className={`mt-8 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-[14px] font-semibold transition-transform hover:scale-[1.03] active:scale-95 ${
-                tier.featured ? "bg-ink text-cream" : "bg-cream/10 text-cream hover:bg-cream/15"
-              }`}
-            >
-              {tier.cta}
-            </a>
-          </motion.div>
-        </Reveal>
-      ))}
-    </div>
-
-    <Reveal delay={200}>
-      <p className="mt-10 text-center font-mono text-[12.5px] text-cream/45">
-        Only need a single shoot, reel or website instead of a monthly plan?{" "}
-        <a href="#services" className="text-yellow hover:underline">
-          See one-off pricing
-        </a>
-        .
-      </p>
-    </Reveal>
-
-    {/* COMPARE PLANS & FEATURES */}
-    <Reveal delay={260}>
-      <div className="mt-24">
-        <div className="mx-auto max-w-xl text-center">
-          <span className="font-mono text-[11px] font-medium tracking-widest text-yellow">
-            COMPARE
-          </span>
-          <h3 className="mt-3 font-display text-2xl font-extrabold leading-tight sm:text-3xl">
-            Compare plans &amp; features
-          </h3>
-          <p className="mt-3 text-[14px] leading-relaxed text-cream/60">
-            A closer look at what's included, plan by plan.
-          </p>
-        </div>
-
-        <div className="mt-10 overflow-x-auto rounded-2xl border border-cream/15">
-          <table className="w-full min-w-[560px] border-collapse text-left">
-            <thead>
-              <tr className="border-b border-cream/15 bg-cream/[0.04]">
-                <th className="sticky left-0 bg-ink px-5 py-4 font-mono text-[12px] font-medium tracking-wide text-cream/50">
-                  &nbsp;
-                </th>
-                {PRICING_TIERS.map((tier) => (
-                  <th
-                    key={tier.name}
-                    className={`px-5 py-4 text-center font-display text-[15px] font-bold ${
-                      tier.featured ? "text-yellow" : "text-cream"
-                    }`}
-                  >
-                    {tier.name}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {COMPARE_GROUPS.map((group) => (
-                <React.Fragment key={group.group}>
-                  <tr className="bg-cream/[0.06]">
-                    <td
-                      colSpan={PRICING_TIERS.length + 1}
-                      className="sticky left-0 px-5 py-2.5 font-mono text-[11px] font-semibold uppercase tracking-widest text-cream/55"
-                    >
-                      {group.group}
-                    </td>
-                  </tr>
-                  {group.rows.map((row) => (
-                    <tr key={row.label} className="border-b border-cream/10 last:border-b-0">
-                      <td className="sticky left-0 bg-ink px-5 py-3.5 text-[13.5px] text-cream/80">
-                        {row.label}
-                      </td>
-                      {row.values.map((value, i) => (
-                        <td key={i} className="px-5 py-3.5 text-center">
-                          <CompareCell value={value} />
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </React.Fragment>
-              ))}
-            </tbody>
-          </table>
-        </div>
+    <Reveal delay={100}>
+      <div className="mx-auto mt-12 grid max-w-4xl gap-4 sm:grid-cols-3">
+        {[
+          ["One-off projects", "A shoot, a reel batch, or a website launch."],
+          ["Monthly support", "Consistent content, campaign management, or both."],
+          ["Growth plans", "A joined-up mix of creative, ads, and upkeep."],
+        ].map(([title, detail]) => (
+          <div key={title} className="rounded-2xl border border-cream/15 bg-cream/[0.04] p-6">
+            <h3 className="font-display text-lg font-bold">{title}</h3>
+            <p className="mt-2 text-[13.5px] leading-relaxed text-cream/65">{detail}</p>
+            <p className="mt-4 font-mono text-[12px] text-yellow">Custom quote · scope first</p>
+          </div>
+        ))}
+      </div>
+      <div className="mt-9 text-center">
+        <a href="#quote" className="inline-flex items-center gap-2 rounded-full bg-yellow px-5 py-3 text-[14px] font-semibold text-ink">Get a quote <ArrowRight className="h-4 w-4" /></a>
       </div>
     </Reveal>
   </div>
 </section>
+
+      {/* QUOTE FORM */}
+      <section id="quote" className="scroll-mt-24 py-24">
+        <div className="mx-auto grid max-w-6xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+          <Reveal>
+            <span className="font-mono text-[11px] font-medium tracking-widest text-teal">LET’S TALK</span>
+            <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl">Tell us what you’re working on.</h2>
+            <p className="mt-4 max-w-md text-[14.5px] leading-relaxed text-ink/65">Share a few details and we’ll follow up with questions, a recommended scope, and a quote tailored to your needs.</p>
+            <p className="mt-6 text-[13px] text-ink/55">No commitment. Ad spend is separate from service fees.</p>
+            <div className="mt-5 flex flex-wrap gap-3 text-[13px] font-medium">
+              {WHATSAPP_NUMBERS.map((number) => <a key={number} href={`tel:+91${number}`} className="text-teal hover:underline">Call +91 {number}</a>)}
+            </div>
+          </Reveal>
+          <Reveal delay={100}>
+            <form className="rounded-2xl border border-ink/10 bg-white/70 p-6 shadow-sm sm:p-8" onSubmit={(event) => {
+              event.preventDefault();
+              const data = new FormData(event.currentTarget);
+              const message = [
+                "Hi UP! I'd like a quote.",
+                `Name: ${data.get("name")}`,
+                `Email: ${data.get("email")}`,
+                `Phone: ${data.get("phone") || "Not provided"}`,
+                `Service: ${data.get("service")}`,
+                `Project details: ${data.get("message") || "Not provided"}`,
+              ].join("\n");
+              window.open(`https://wa.me/91${WHATSAPP_NUMBERS[0]}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+            }}>
+              <div className="grid gap-5 sm:grid-cols-2">
+                <label className="text-[13px] font-semibold">Name <span className="text-red-600">*</span><input name="name" required autoComplete="name" className="mt-2 w-full rounded-xl border border-ink/15 bg-cream px-4 py-3 font-normal outline-none focus:border-teal" placeholder="Your name" /></label>
+                <label className="text-[13px] font-semibold">Email <span className="text-red-600">*</span><input name="email" type="email" required autoComplete="email" className="mt-2 w-full rounded-xl border border-ink/15 bg-cream px-4 py-3 font-normal outline-none focus:border-teal" placeholder="you@example.com" /></label>
+                <label className="text-[13px] font-semibold">Phone<input name="phone" type="tel" autoComplete="tel" className="mt-2 w-full rounded-xl border border-ink/15 bg-cream px-4 py-3 font-normal outline-none focus:border-teal" placeholder="Your number (optional)" /></label>
+                <label className="text-[13px] font-semibold">Service <span className="text-red-600">*</span><select name="service" required defaultValue="" className="mt-2 w-full rounded-xl border border-ink/15 bg-cream px-4 py-3 font-normal outline-none focus:border-teal"><option value="" disabled>Select a service</option>{SERVICES.map((service) => <option key={service.name}>{service.name}</option>)}<option>Not sure yet — help me choose</option></select></label>
+                <label className="text-[13px] font-semibold sm:col-span-2">Project details<textarea name="message" rows="4" className="mt-2 w-full resize-y rounded-xl border border-ink/15 bg-cream px-4 py-3 font-normal outline-none focus:border-teal" placeholder="What are you hoping to achieve? (optional)" /></label>
+              </div>
+              <button type="submit" className="mt-6 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-[14px] font-semibold text-cream transition-transform hover:scale-[1.03]"><Send className="h-4 w-4" /> Continue on WhatsApp</button>
+              <p className="mt-3 text-[11.5px] leading-relaxed text-ink/45">Your details are added to a message for UP in WhatsApp. Review and send it there to request your quote.</p>
+            </form>
+          </Reveal>
+        </div>
+      </section>
 
       {/* CTA */}
       <section className="relative overflow-hidden bg-yellow py-24">

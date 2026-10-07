@@ -13,11 +13,10 @@ export default function Header() {
   )}`;
 
   const navLinks = [
+    { label: "About", href: "/about" },
     { label: "Work", href: "/#work" },
     { label: "Services", href: "/#services" },
     { label: "Blog", href: "/blog" },
-    { label: "Pricing", href: "/#pricing" },
-    { label: "Process", href: "/#process" },
   ];
 
   return (

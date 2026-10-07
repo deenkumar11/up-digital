@@ -5,6 +5,9 @@ import Footer from "./components/Footer.jsx";
 import Home from "./pages/Home.jsx";
 import BlogList from "./pages/BlogList.jsx";
 import BlogPost from "./pages/BlogPost.jsx";
+import About from "./pages/About.jsx";
+import Privacy from "./pages/Privacy.jsx";
+import ServiceDetail from "./pages/ServiceDetail.jsx";
 
 /* ---------------------------------------------------------
    UP — Chennai digital marketing agency
@@ -35,6 +38,9 @@ export default function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/services/:slug" element={<ServiceDetail />} />
         <Route path="/blog" element={<BlogList />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
       </Routes>

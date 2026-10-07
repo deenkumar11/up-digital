@@ -1,5 +1,6 @@
 import React from "react";
 import LogoMark from "./LogoMark.jsx";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -9,7 +10,11 @@ export default function Footer() {
           <LogoMark className="h-8 w-8" />
           <span className="text-[13px] text-ink/60">UP Digital · Chennai, India</span>
         </div>
-        <p className="font-mono text-[12.5px] text-ink/45">Shoots · Ads · Websites · Growth</p>
+        <div className="flex flex-wrap items-center justify-center gap-5 font-mono text-[12px] text-ink/55 sm:justify-end">
+          <Link to="/about" className="transition-colors hover:text-teal">About</Link>
+          <Link to="/blog" className="transition-colors hover:text-teal">Blog</Link>
+          <Link to="/privacy" className="transition-colors hover:text-teal">Privacy</Link>
+        </div>
       </div>
     </footer>
   );

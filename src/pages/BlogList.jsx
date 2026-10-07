@@ -11,7 +11,7 @@ export default function BlogList() {
   return (
     <>
       {/* header strip, matches the tone of the hero on other pages */}
-      <section className="border-b border-ink/10 bg-yellow/40 py-16">
+      <section className="border-b border-ink/10 bg-yellow py-16">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <Reveal>
             <Pill className="border-transparent bg-cream">FROM UP</Pill>
