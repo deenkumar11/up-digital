@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Reveal from "../components/Reveal.jsx";
-import Pill from "../components/Pill.jsx";
 import { SERVICES } from "./Home.jsx";
 
 const SERVICE_FAQS = {
@@ -59,8 +58,7 @@ export default function ServiceDetail() {
       <section className="border-b border-ink/10 bg-yellow py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <Reveal>
-            <Pill className="border-transparent bg-cream">UP DIGITAL · SERVICE DETAILS</Pill>
-            <div className="mt-6 flex items-start gap-4">
+            <div className="flex items-start gap-4">
               <div className="mt-1 grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-cream"><Icon className="h-6 w-6" /></div>
               <div>
                 <h1 className="font-display text-4xl font-extrabold leading-tight sm:text-5xl">{service.name}</h1>

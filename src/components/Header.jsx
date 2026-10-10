@@ -21,9 +21,9 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-ink/10 bg-cream/90 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 sm:px-8">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-2.5 sm:px-8">
         <Link to="/" className="flex items-center gap-2.5">
-          <LogoMark />
+          <LogoMark className="h-12 w-12" />
         </Link>
 
         <nav className="hidden items-center gap-8 text-[14.5px] font-medium md:flex">

@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Camera, Check, HeartHandshake, MapPin, Megaphone, Monitor } from "lucide-react";
+import { ArrowRight, Camera, Check, HeartHandshake, Megaphone, Monitor } from "lucide-react";
 import Reveal from "../components/Reveal.jsx";
-import Pill from "../components/Pill.jsx";
 
 const VALUES = [
   {
@@ -30,15 +29,14 @@ const SERVICES = [
 
 export default function About() {
   return (
-    <>
-      <section className="relative overflow-hidden border-b border-ink/10 bg-yellow py-20 sm:py-28">
+    <main className="bg-cream text-ink">
+      <section className="relative overflow-hidden border-b border-cream/10 bg-ink py-20 text-cream sm:py-28">
         <div className="mx-auto grid max-w-6xl gap-10 px-5 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <Reveal>
-            <Pill className="border-transparent bg-cream"><MapPin className="h-3 w-3" /> CHENNAI · BUILT FOR LOCAL BUSINESS</Pill>
-            <h1 className="mt-5 max-w-2xl font-display text-4xl font-extrabold leading-[1.08] sm:text-6xl">A small team to help your business move up.</h1>
-            <p className="mt-6 max-w-xl text-[15.5px] leading-relaxed text-ink/70">UP Digital is a Chennai-based creative and marketing team helping clinics, studios, shops, and growing businesses show up online with confidence.</p>
-            <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-ink/70">We bring content, campaigns, and websites together with a practical approach: understand the business, focus on what will help, and make the work count.</p>
-            <Link to="/#quote" className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-[14px] font-semibold text-cream transition-transform hover:scale-[1.03]">Tell us about your business <ArrowRight className="h-4 w-4" /></Link>
+            <h1 className="max-w-2xl font-display text-4xl font-extrabold leading-[1.08] sm:text-6xl">A small team to help your business move up.</h1>
+            <p className="mt-6 max-w-xl text-[15.5px] leading-relaxed text-cream/75">UP Digital is a Chennai-based creative and marketing team helping clinics, studios, shops, and growing businesses show up online with confidence.</p>
+            <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-cream/75">We bring content, campaigns, and websites together with a practical approach: understand the business, focus on what will help, and make the work count.</p>
+            <Link to="/#quote" className="mt-8 inline-flex items-center gap-2 rounded-full bg-yellow px-5 py-3 text-[14px] font-semibold text-ink transition-transform hover:scale-[1.03]">Tell us about your business <ArrowRight className="h-4 w-4" /></Link>
           </Reveal>
           <Reveal delay={120}>
             <img src="/images/team-at-work.webp" alt="The UP Digital team working together" className="aspect-[4/3] w-full rounded-3xl object-cover shadow-lg" />
@@ -101,6 +99,6 @@ export default function About() {
           <Link to="/#quote" className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-[14px] font-semibold text-cream transition-transform hover:scale-[1.03]">Get a quote <ArrowRight className="h-4 w-4" /></Link>
         </Reveal>
       </section>
-    </>
+    </main>
   );
 }

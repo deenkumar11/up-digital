@@ -13,7 +13,6 @@ import {
   MessageCircle,
   Check,
   Play,
-  Target,
   Users,
   Search,
   Video,
@@ -21,7 +20,6 @@ import {
   Send,
 } from "lucide-react";
 import Reveal from "../components/Reveal.jsx";
-import Pill from "../components/Pill.jsx";
 import ImagePlaceholder from "../components/ImagePlaceholder.jsx";
 import { WHATSAPP_NUMBERS } from "../components/Header.jsx";
 import { BLOG_POSTS } from "../data/blogPosts.js";
@@ -175,9 +173,6 @@ export default function Home() {
 
         <div className="relative mx-auto max-w-6xl px-5 pb-28 pt-14 sm:px-8 sm:pt-20">
           <Reveal>
-            <Pill className="border-transparent bg-cream">
-              <Target className="h-3 w-3" /> CHENNAI · DIGITAL MARKETING AGENCY
-            </Pill>
           </Reveal>
 
           <div className="mt-7 grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
@@ -218,9 +213,6 @@ export default function Home() {
                 </a>
               </div>
 
-              <p className="mt-4 font-mono text-[12.5px] text-ink/60">
-                First client this quarter gets one service on us.
-              </p>
             </Reveal>
 
             <Reveal delay={200}>

@@ -2,23 +2,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Search, Video, TrendingUp, ArrowRight } from "lucide-react";
 import Reveal from "../components/Reveal.jsx";
-import Pill from "../components/Pill.jsx";
 import { BLOG_POSTS } from "../data/blogPosts.js";
 
 const ICONS = { Search, Video, TrendingUp };
 
 export default function BlogList() {
   return (
-    <>
+    <main className="bg-cream text-ink">
       {/* header strip, matches the tone of the hero on other pages */}
-      <section className="border-b border-ink/10 bg-yellow py-16">
+      <section className="border-b border-cream/10 bg-ink py-16 text-cream">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <Reveal>
-            <Pill className="border-transparent bg-cream">FROM UP</Pill>
-            <h1 className="mt-4 font-display text-4xl font-extrabold leading-tight sm:text-5xl">
+            <h1 className="font-display text-4xl font-extrabold leading-tight sm:text-5xl">
               Notes on growing a small business online.
             </h1>
-            <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-ink/70">
+            <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-cream/70">
               Short, practical write-ups from the shoots, ads and sites we
               run — no jargon, nothing you need an agency to translate.
             </p>
@@ -58,6 +56,6 @@ export default function BlogList() {
           })}
         </div>
       </section>
-    </>
+    </main>
   );
 }

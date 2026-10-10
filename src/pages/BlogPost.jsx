@@ -17,6 +17,7 @@ export default function BlogPost() {
   const more = BLOG_POSTS.filter((p) => p.slug !== post.slug).slice(0, 2);
 
   return (
+    <main className="bg-cream text-ink">
     <article className="mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-20">
       <Reveal>
         <Link
@@ -78,7 +79,7 @@ export default function BlogPost() {
 
       {more.length > 0 && (
         <Reveal delay={220} className="mt-16">
-          <p className="font-mono text-[11px] font-medium tracking-widest text-teal">
+        <p className="font-mono text-[11px] font-medium tracking-widest text-teal">
             READ NEXT
           </p>
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
@@ -89,7 +90,7 @@ export default function BlogPost() {
                 className="rounded-2xl border border-ink/10 bg-white/50 p-5 transition-colors hover:border-ink/25"
               >
                 <h3 className="font-display text-[15px] font-bold leading-snug">{p.title}</h3>
-                <p className="mt-2 font-mono text-[11.5px] text-ink/45">
+                  <p className="mt-2 font-mono text-[11.5px] text-ink/45">
                   {p.date} · {p.readTime}
                 </p>
               </Link>
@@ -98,5 +99,6 @@ export default function BlogPost() {
         </Reveal>
       )}
     </article>
+    </main>
   );
 }
